@@ -1,0 +1,18 @@
+On evOpenContextMenu
+	Calculate hrzPos as (mouseover(kMHorz)-$cobj.$left)+($cobj.$hscroll-1)*8
+	Calculate columnWidths as $cobj.$columnwidths
+	Calculate colsVisible as $cobj.$columnsvisible
+	Repeat
+		Calculate colNum as colNum+1
+		If strtok('colsVisible',",")
+			Calculate colRight as colRight+strtok('columnWidths',",")
+			Calculate visible as kTrue
+		Else
+			Do strtok('columnWidths',",")
+			Calculate visible as kFalse
+		End If
+	Until colRight>hrzPos|isclear(colsVisible)
+	If not(visible)     ;; last column is not visible
+		Calculate colNum as colNum-1
+	End If
+	Do pContextMenu.$init(colNum)

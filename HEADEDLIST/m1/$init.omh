@@ -1,0 +1,4 @@
+Do $cinst.$objs.$add(con('column',pColNum),kTrue) Returns menuLineRef
+Do menuLineRef.$methods.$add('$event')
+Do menuLineRef.$methods.//$event//.$methodlines.$add() Returns methodLineRef
+Calculate methodLineRef.$text as 'OK message {do something}'
